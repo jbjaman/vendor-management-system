@@ -10,8 +10,9 @@
     >
 
     <title>Vendors</title>
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
 </head>
 
 <body class="bg-gray-100">
