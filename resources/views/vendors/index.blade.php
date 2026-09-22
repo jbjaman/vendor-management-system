@@ -52,7 +52,7 @@
 
     <div class="bg-white  rounded-xl shadow">
 
-    <div>
+    <div class="">
    
 <!-- Header -->
         <div class="flex p-7 items-center justify-between">
@@ -64,7 +64,7 @@
 <!-- vendor count card -->
 
 <div class=" flex items-center gap-3">
-<div class="border rounded-lg flex py-2 px-4 border-slate-300 shadow-sm items-center gap-3">
+<div class=" rounded-lg flex py-2 px-4   shadow-inner shadow-slate-200 items-center gap-3">
 <span data-lucide="UsersRound" class="w-10 h-10 text-blue-600 bg-blue-100 p-2 rounded-lg"></span>
 <div>
 <p class="text-sm text-gray-500">Total Vendors</p>
@@ -72,7 +72,7 @@
 </div>
 
 </div>
-<div class="border rounded-lg flex py-2 px-4 border-slate-300 shadow-sm items-center gap-3">
+<div class=" rounded-lg flex py-2 px-4   shadow-inner shadow-slate-200 items-center gap-3">
 <span data-lucide="CircleCheck" class="w-10 h-10 text-green-600 bg-green-100 p-2 rounded-lg"></span>
 <div>
 <p class="text-sm text-gray-500">Active Vendors</p>
@@ -84,7 +84,7 @@
 <div>
 <a
             href="{{ route('vendors.create') }}"
-            class="inline-flex justify-center px-6 py-3 shadow-md shadow-slate-500 rounded-lg bg-blue-600 text-white hover:-translate-y-1 hover:shadow-xl duration-900"
+            class="inline-flex justify-center px-6 py-3 shadow-md shadow-slate-500 rounded-lg bg-blue-600 text-white  hover:shadow-lg duration-300"
         >
             + Add Vendor
         </a>
@@ -95,31 +95,28 @@
 
 
 
-
-</div>
-
-<!-- Down Side -->
-        <div class="p-5 border-2">
+<div class="p-5 border-t-2  border-slate-200">
 
             <form
                 action="{{ route('vendors.index') }}"
                 method="GET"
-                class="grid grid-cols-1 md:grid-cols-4 gap-4"
+                class="grid grid-cols-1 md:grid-cols-5 gap-4"
             >
 
-                <div class="md:col-span-2">
+                <div class="md:col-span-2 px-5 py-2.5  border p-2 shadow-xs rounded-md border-slate-300 flex gap-2 items-center hover:shadow-md duration-400">
+                    <span data-lucide='Search' class="w-4 opacity-50"></span>
 
                     <input
                         type="text"
                         name="search"
                         value="{{ request('search') }}"
                         placeholder="Search by name, email or company..."
-                        class="w-full rounded-lg border-gray-300"
+                        class="w-full outline-none"
                     >
 
                 </div>
 
-                <div>
+                <div class=" px-5 py-2.5 rounded-md  border border-slate-300 shadow-xs hover:shadow-md duration-400">
 
                     <select
                         name="type"
@@ -146,7 +143,7 @@
 
                 </div>
 
-                <div>
+                <div class="px-5 py-2.5 rounded-md  border border-slate-300 shadow-xs hover:shadow-md duration-400">
 
                     <select
                         name="status"
@@ -173,6 +170,15 @@
 
                 </div>
 
+                
+                    <a
+                        href="{{ route('vendors.index') }}"
+                        class="px-5 py-2.5 rounded-md  border border-slate-300 flex gap-2 items-center justify-center shadow-xs hover:shadow-md duration-400"
+                    >
+                      <span data-lucide="RotateCw" class="w-4 h-auto"></span>Clear Filters
+                    </a>
+
+
                 <div class="md:col-span-4 flex gap-3">
 
                     <button
@@ -182,20 +188,17 @@
                         Search
                     </button>
 
-                    <a
-                        href="{{ route('vendors.index') }}"
-                        class="px-5 py-2.5 rounded-lg border"
-                    >
-                        Reset
-                    </a>
-
                 </div>
 
             </form>
 
         </div>
+</div>
 
-        <div class="overflow-x-auto border">
+<!-- Down Side -->
+        
+
+        <div class="overflow-x-auto ">
 
             <table class="w-full text-left">
 
