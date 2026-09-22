@@ -17,9 +17,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 ">
 
-<div class="max-w-7xl mx-auto px-4 py-10">
+<div class="max-w-7xl mx-auto px-4 py-10 border-2 border-red-500">
 
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
 
@@ -50,9 +50,56 @@
 
     @endif
 
-    <div class="bg-white rounded-xl shadow">
+    <div class="bg-white  rounded-xl shadow">
 
-        <div class="p-5 border-b">
+    <div>
+   
+<!-- Header -->
+        <div class="flex p-7 items-center justify-between">
+        <!-- left side -->
+            <div class="border-l-4 pl-5 border-blue-700">
+        <h1 class="text-3xl font-bold text-gray-900">Vendor Management</h1>
+        <span class="text-gray-500 mt-1">Total vendors and active vendors at a glance</span>
+</div>
+<!-- vendor count card -->
+
+<div class=" flex items-center gap-3">
+<div class="border rounded-lg flex py-2 px-4 border-slate-300 shadow-sm items-center gap-3">
+<span data-lucide="UsersRound" class="w-10 h-10 text-blue-600 bg-blue-100 p-2 rounded-lg"></span>
+<div>
+<p class="text-sm text-gray-500">Total Vendors</p>
+    <p class="text-xl font-bold">{{$totalVendors}}</p>
+</div>
+
+</div>
+<div class="border rounded-lg flex py-2 px-4 border-slate-300 shadow-sm items-center gap-3">
+<span data-lucide="CircleCheck" class="w-10 h-10 text-green-600 bg-green-100 p-2 rounded-lg"></span>
+<div>
+<p class="text-sm text-gray-500">Active Vendors</p>
+    <p class="text-xl font-bold">{{$activeVendors}}</p>
+</div>
+</div>
+</div>
+<!-- vendor Add button -->
+<div>
+<a
+            href="{{ route('vendors.create') }}"
+            class="inline-flex justify-center px-6 py-3 shadow-md shadow-slate-500 rounded-lg bg-blue-600 text-white hover:-translate-y-1 hover:shadow-xl duration-900"
+        >
+            + Add Vendor
+        </a>
+</div>
+</div>
+
+</div>
+
+
+
+
+</div>
+
+<!-- Down Side -->
+        <div class="p-5 border-2">
 
             <form
                 action="{{ route('vendors.index') }}"
@@ -148,7 +195,7 @@
 
         </div>
 
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto border">
 
             <table class="w-full text-left">
 

@@ -36,8 +36,11 @@ class VendorController extends Controller
             ->latest()
             ->paginate(10)
             ->withQueryString();
+        
+        $totalVendors = Vendor::count();
+        $activeVendors = Vendor::where('status','active')->count();
 
-        return view('vendors.index', compact('vendors'));
+        return view('vendors.index', compact('vendors','totalVendors','activeVendors'));
     }
 
     /**
