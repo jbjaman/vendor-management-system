@@ -10,7 +10,13 @@
     >
 
     <title>{{ $vendor->name }}</title>
-<link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}">
+<!-- For Live Production -->
+    <!-- <title>Vendors</title>
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}"> -->
+
+
+    <!-- For Local -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gray-100">

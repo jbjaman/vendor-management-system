@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Add Vendor</title>
-<link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}">
+<!-- For Live Production -->
+    <!-- <title>Vendors</title>
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}"> -->
+
+
+    <!-- For Local -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gray-100">

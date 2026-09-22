@@ -8,11 +8,13 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+<!-- For Live Production -->
+    <!-- <title>Vendors</title>
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}"> -->
 
-    <title>Vendors</title>
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}">
 
-    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
+    <!-- For Local -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-gray-100">
