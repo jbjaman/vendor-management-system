@@ -10,10 +10,10 @@
 
     <title>Edit Vendor</title>
 
-    <!-- For Live Production 
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}"> -->
+    <!-- For Live Production -->
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
 
 </head>
 

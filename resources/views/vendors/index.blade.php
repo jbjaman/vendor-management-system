@@ -9,12 +9,12 @@
         content="width=device-width, initial-scale=1.0"
     >
     <title>Vendors</title>
-<!-- For Live Production 
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}"> -->
+<!-- For Live Production -->
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}">
 
 
     <!-- For Local -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
 </head>
 
 <body class="max-w-7xl mx-auto bg-gray-100 ">
