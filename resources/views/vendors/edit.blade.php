@@ -1,189 +1,403 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Add Vendor</title>
-<!-- For Live Production -->
-    <!-- <title>Vendors</title>
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}"> -->
+    <title>Edit Vendor</title>
 
-
-    <!-- For Local -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 
-<body class="bg-gray-100">
+<body class="min-h-screen bg-gray-50">
 
-<div class="max-w-3xl mx-auto px-4 py-10">
+    <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
 
-    <div class="bg-white rounded-xl shadow p-8">
+        <!-- Main Card -->
+        <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
 
-        <div class="mb-8">
-            <h1 class="text-2xl font-bold text-gray-900">
-                Add New Vendor
-            </h1>
+            <!-- Header -->
+            <div class="border-b border-gray-200 px-6 py-6 sm:px-8">
 
-            <p class="text-gray-500 mt-1">
-                Register a new vendor into the system.
-            </p>
+                <div class="flex items-start gap-4">
+
+                    <!-- Blue Accent -->
+                    <div class="mt-1 h-14 w-1 rounded-full bg-blue-600"></div>
+
+                    <div>
+                        <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                            Edit Vendor
+                        </h1>
+
+                        <p class="mt-1 text-sm text-slate-500 sm:text-base">
+                            Update vendor information and details.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Form -->
+            <div class="px-6 py-7 sm:px-8 sm:py-8">
+
+                <!-- Validation Errors -->
+                @if ($errors->any())
+
+                    <div class="mb-6 rounded-xl border border-red-200 bg-red-50 p-4">
+
+                        <div class="flex gap-3">
+
+                            <i
+                                data-lucide="circle-alert"
+                                class="mt-0.5 h-5 w-5 shrink-0 text-red-600"
+                            ></i>
+
+                            <div>
+
+                                <p class="font-semibold text-red-800">
+                                    Please fix the following errors:
+                                </p>
+
+                                <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-red-700">
+
+                                    @foreach ($errors->all() as $error)
+
+                                        <li>{{ $error }}</li>
+
+                                    @endforeach
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                @endif
+
+
+                <form action="{{ route('vendors.update', $vendor) }}" method="POST">
+
+                    @csrf
+                    @method('PUT')
+
+
+                    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+
+
+                        <!-- Vendor Name -->
+                        <div>
+
+                            <label
+                                for="name"
+                                class="mb-2 block text-sm font-semibold text-slate-700"
+                            >
+                                Vendor Name
+                            </label>
+
+                            <div class="relative">
+
+                                <i
+                                    data-lucide="user-round"
+                                    class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                                ></i>
+
+                                <input
+                                    id="name"
+                                    type="text"
+                                    name="name"
+                                    value="{{ old('name', $vendor->name) }}"
+                                    placeholder="Enter vendor name"
+                                    class="w-full rounded-lg border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Email -->
+                        <div>
+
+                            <label
+                                for="email"
+                                class="mb-2 block text-sm font-semibold text-slate-700"
+                            >
+                                Email
+                            </label>
+
+                            <div class="relative">
+
+                                <i
+                                    data-lucide="mail"
+                                    class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                                ></i>
+
+                                <input
+                                    id="email"
+                                    type="email"
+                                    name="email"
+                                    value="{{ old('email', $vendor->email) }}"
+                                    placeholder="vendor@example.com"
+                                    class="w-full rounded-lg border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Phone -->
+                        <div>
+
+                            <label
+                                for="phone"
+                                class="mb-2 block text-sm font-semibold text-slate-700"
+                            >
+                                Phone
+                            </label>
+
+                            <div class="relative">
+
+                                <i
+                                    data-lucide="phone"
+                                    class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                                ></i>
+
+                                <input
+                                    id="phone"
+                                    type="text"
+                                    name="phone"
+                                    value="{{ old('phone', $vendor->phone) }}"
+                                    placeholder="+880 1XXXXXXXXX"
+                                    class="w-full rounded-lg border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Company Name -->
+                        <div>
+
+                            <label
+                                for="company_name"
+                                class="mb-2 block text-sm font-semibold text-slate-700"
+                            >
+                                Company Name
+                            </label>
+
+                            <div class="relative">
+
+                                <i
+                                    data-lucide="building-2"
+                                    class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                                ></i>
+
+                                <input
+                                    id="company_name"
+                                    type="text"
+                                    name="company_name"
+                                    value="{{ old('company_name', $vendor->company_name) }}"
+                                    placeholder="Enter company name"
+                                    class="w-full rounded-lg border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Vendor Type -->
+                        <div>
+
+                            <label
+                                for="type"
+                                class="mb-2 block text-sm font-semibold text-slate-700"
+                            >
+                                Vendor Type
+                            </label>
+
+                            <div class="relative">
+
+                                <i
+                                    data-lucide="briefcase-business"
+                                    class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                                ></i>
+
+                                <select
+                                    id="type"
+                                    name="type"
+                                    class="w-full appearance-none rounded-lg border border-slate-300 bg-white py-2.5 pl-10 pr-10 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Type
+                                    </option>
+
+                                    <option
+                                        value="product"
+                                        @selected(old('type', $vendor->type) === 'product')
+                                    >
+                                        Product
+                                    </option>
+
+                                    <option
+                                        value="consultant"
+                                        @selected(old('type', $vendor->type) === 'consultant')
+                                    >
+                                        Consultant
+                                    </option>
+
+                                </select>
+
+                                <i
+                                    data-lucide="chevron-down"
+                                    class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                                ></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Status -->
+                        <div>
+
+                            <label
+                                for="status"
+                                class="mb-2 block text-sm font-semibold text-slate-700"
+                            >
+                                Status
+                            </label>
+
+                            <div class="relative">
+
+                                <i
+                                    data-lucide="circle-check"
+                                    class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                                ></i>
+
+                                <select
+                                    id="status"
+                                    name="status"
+                                    class="w-full appearance-none rounded-lg border border-slate-300 bg-white py-2.5 pl-10 pr-10 text-sm text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                                >
+
+                                    <option
+                                        value="active"
+                                        @selected(old('status', $vendor->status) === 'active')
+                                    >
+                                        Active
+                                    </option>
+
+                                    <option
+                                        value="inactive"
+                                        @selected(old('status', $vendor->status) === 'inactive')
+                                    >
+                                        Inactive
+                                    </option>
+
+                                </select>
+
+                                <i
+                                    data-lucide="chevron-down"
+                                    class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                                ></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Address -->
+                        <div class="md:col-span-2">
+
+                            <label
+                                for="address"
+                                class="mb-2 block text-sm font-semibold text-slate-700"
+                            >
+                                Address
+                            </label>
+
+                            <div class="relative">
+
+                                <i
+                                    data-lucide="map-pin"
+                                    class="pointer-events-none absolute left-3 top-3 h-4 w-4 text-slate-400"
+                                ></i>
+
+                                <textarea
+                                    id="address"
+                                    name="address"
+                                    rows="4"
+                                    placeholder="Enter vendor address"
+                                    class="w-full resize-none rounded-lg border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+                                >{{ old('address', $vendor->address) }}</textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Actions -->
+                    <div class="mt-8 flex flex-col-reverse gap-3 border-t border-gray-200 pt-6 sm:flex-row sm:justify-end">
+
+                        <a
+                            href="{{ route('vendors.index') }}"
+                            class="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                        >
+
+                            <i
+                                data-lucide="arrow-left"
+                                class="h-4 w-4"
+                            ></i>
+
+                            Cancel
+
+                        </a>
+
+
+                        <button
+                            type="submit"
+                            class="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        >
+
+                            <i
+                                data-lucide="save"
+                                class="h-4 w-4"
+                            ></i>
+
+                            Update Vendor
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
         </div>
-
-        @if ($errors->any())
-            <div class="mb-6 rounded-lg bg-red-50 p-4 text-red-700">
-                <ul class="list-disc pl-5">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <form action="{{ route('vendors.update', $vendor) }}" method="POST">
-
-            @csrf
-            @method('PUT')
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                <div>
-                    <label class="block mb-2 font-medium">
-                        Vendor Name
-                    </label>
-
-                    <input
-                        type="text"
-                        name="name"
-                        value="{{ old('name', $vendor->name) }}"
-                        class="w-full rounded-lg border-gray-300"
-                        required
-                    >
-                </div>
-
-                <div>
-                    <label class="block mb-2 font-medium">
-                        Email
-                    </label>
-
-                    <input
-                        type="email"
-                        name="email"
-                        value="{{ old('email', $vendor->email) }}"
-                        class="w-full rounded-lg border-gray-300"
-                        required
-                    >
-                </div>
-
-                <div>
-                    <label class="block mb-2 font-medium">
-                        Phone
-                    </label>
-
-                    <input
-                        type="text"
-                        name="phone"
-                        value="{{ old('phone', $vendor->phone) }}"
-                        class="w-full rounded-lg border-gray-300"
-                        required
-                    >
-                </div>
-
-                <div>
-                    <label class="block mb-2 font-medium">
-                        Company Name
-                    </label>
-
-                    <input
-                        type="text"
-                        name="company_name"
-                        value="{{ old('company_name', $vendor->company_name) }}"
-                        class="w-full rounded-lg border-gray-300"
-                        required
-                    >
-                </div>
-
-                <div>
-                    <label class="block mb-2 font-medium">
-                        Vendor Type
-                    </label>
-
-                    <select
-                        name="type"
-                        class="w-full rounded-lg border-gray-300"
-                        required
-                    >
-                        <option value="">Select Type</option>
-
-                        <option
-                            value="product"
-                            @selected(old('type',  $vendor->type) === 'product')
-                        >
-                            Product
-                        </option>
-
-                        <option
-                            value="consultant"
-                            @selected(old('type', $vendor->type) === 'consultant')
-                        >
-                            Consultant
-                        </option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block mb-2 font-medium">
-                        Status
-                    </label>
-
-                    <select
-                        name="status"
-                        class="w-full rounded-lg border-gray-300"
-                    >
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                    </select>
-                </div>
-
-                <div class="md:col-span-2">
-
-                    <label class="block mb-2 font-medium">
-                        Address
-                    </label>
-
-                    <textarea
-                        name="address"
-                        rows="4"
-                        class="w-full rounded-lg border-gray-300"
-                    >{{ old('address') }}</textarea>
-
-                </div>
-
-            </div>
-
-            <div class="flex justify-end gap-3 mt-8">
-
-                <a
-                    href="{{ route('vendors.index') }}"
-                    class="px-5 py-2.5 rounded-lg border"
-                >
-                    Cancel
-                </a>
-
-                <button
-                    type="submit"
-                    class="px-5 py-2.5 rounded-lg bg-black text-white"
-                >
-                    Update Vendor
-                </button>
-
-            </div>
-
-        </form>
 
     </div>
 
-</div>
-
 </body>
+
 </html>

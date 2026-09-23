@@ -39,8 +39,11 @@ class VendorController extends Controller
         
         $totalVendors = Vendor::count();
         $activeVendors = Vendor::where('status','active')->count();
+        $inactiveVendors = Vendor::where('status','inactive')->count();
+        $productVendors = Vendor::where('type', 'product')->count();
+$consultantVendors = Vendor::where('type', 'consultant')->count();
 
-        return view('vendors.index', compact('vendors','totalVendors','activeVendors'));
+        return view('vendors.index', compact('vendors','totalVendors','activeVendors', 'inactiveVendors', 'productVendors', 'consultantVendors'));
     }
 
     /**

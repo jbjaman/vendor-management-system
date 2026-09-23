@@ -8,8 +8,8 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
-<!-- For Live Production -->
-    <!-- <title>Vendors</title>
+    <title>Vendors</title>
+<!-- For Live Production 
     <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}"> -->
 
 
@@ -17,30 +17,23 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-100 ">
+<body class="max-w-7xl mx-auto bg-gray-100 ">
 
-<div class="max-w-7xl mx-auto px-4 py-10 border-2 border-red-500">
+<div class="p-4">
 
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+    <!-- <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 border">
 
         <div>
             <h1 class="text-3xl font-bold text-gray-900">
-                Vendors
+                Vendor Management
             </h1>
 
             <p class="text-gray-500 mt-1">
-                Manage your product and consultant vendors.
+                Manage your vendors efficiently and grow your business.
             </p>
         </div>
 
-        <a
-            href="{{ route('vendors.create') }}"
-            class="inline-flex justify-center px-5 py-3 rounded-lg bg-black text-white"
-        >
-            + Add Vendor
-        </a>
-
-    </div>
+    </div> -->
 
     @if(session('success'))
 
@@ -50,38 +43,55 @@
 
     @endif
 
-    <div class="bg-white  rounded-xl shadow">
+    <div class="rounded-lg bg-white  shadow">
 
     <div class="">
    
 <!-- Header -->
-        <div class="flex p-7 items-center justify-between">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between p-4 items-center max-md:gap-4 justify-between">
         <!-- left side -->
             <div class="border-l-4 pl-5 border-blue-700">
-        <h1 class="text-3xl font-bold text-gray-900">Vendor Management</h1>
-        <span class="text-gray-500 mt-1">Total vendors and active vendors at a glance</span>
+        <h1 class=" text-4xl  font-bold text-gray-900">Vendor Management</h1>
+        <span class="text-sm text-gray-500 ">Manage your vendors efficiently and grow your business.</span>
 </div>
 <!-- vendor count card -->
 
-<div class=" flex items-center gap-3">
-<div class=" rounded-lg flex py-2 px-4   shadow-inner shadow-slate-200 items-center gap-3">
-<span data-lucide="UsersRound" class="w-10 h-10 text-blue-600 bg-blue-100 p-2 rounded-lg"></span>
-<div>
-<p class="text-sm text-gray-500">Total Vendors</p>
-    <p class="text-xl font-bold">{{$totalVendors}}</p>
+<div class=" lg:flex items-center gap-3">
+
+<!-- No -4 -->
+
+<div class=" rounded-lg py-2 px-3 flex flex-col  shadow-inner shadow-slate-200 gap-2">
+    <p class="text-xs text-gray-500">All Types </p>
+    <div class="flex items-center gap-2">
+    <div class="flex px-3 items-center gap-2 rounded-sm bg-purple-100">
+    <span data-lucide="CircleUserRound" class="w-4 h-4 text-purple-600  "></span>
+        <p class="">{{$consultantVendors}}</p>
+    </div>
+    <div class="flex  px-3 items-center gap-2 rounded-sm bg-blue-100">
+    <span data-lucide="CircleUser" class="w-4 h-4 text-blue-600"></span>
+        <p class="">{{$productVendors}}</p>
+    </div>
 </div>
+</div>
+<div class=" rounded-lg py-2 px-3 flex flex-col  shadow-inner shadow-slate-200 gap-2">
+    <p class="text-xs text-gray-500">All Status</p>
+    <div class="flex items-center gap-3">
+    <div class="flex  px-3 items-center gap-2 rounded-sm bg-green-100">
+    <span data-lucide="CircleCheck" class="w-4 h-4 text-green-600  "></span>
+        <p class=" ">{{$activeVendors}}</p>
+    </div>
+    <div class="flex  px-3 items-center gap-2 rounded-sm bg-red-100">
+    <span data-lucide="CircleX" class="w-4 h-4 text-red-600"></span>
+        <p class=" ">{{$inactiveVendors}}</p>
+    </div>
+</div>
+</div>
+<!-- End -->
 
 </div>
-<div class=" rounded-lg flex py-2 px-4   shadow-inner shadow-slate-200 items-center gap-3">
-<span data-lucide="CircleCheck" class="w-10 h-10 text-green-600 bg-green-100 p-2 rounded-lg"></span>
-<div>
-<p class="text-sm text-gray-500">Active Vendors</p>
-    <p class="text-xl font-bold">{{$activeVendors}}</p>
-</div>
-</div>
-</div>
+
 <!-- vendor Add button -->
-<div>
+<div class="">
 <a
             href="{{ route('vendors.create') }}"
             class="inline-flex justify-center px-6 py-3 shadow-md shadow-slate-500 rounded-lg bg-blue-600 text-white  hover:shadow-lg duration-300"
@@ -89,8 +99,9 @@
             + Add Vendor
         </a>
 </div>
-</div>
 
+
+</div>
 </div>
 
 
@@ -100,10 +111,10 @@
             <form
                 action="{{ route('vendors.index') }}"
                 method="GET"
-                class="grid grid-cols-1 md:grid-cols-5 gap-4"
+                class="grid  lg:grid-cols-6 gap-4"
             >
 
-                <div class="md:col-span-2 px-5 py-2.5  border p-2 shadow-xs rounded-md border-slate-300 flex gap-2 items-center hover:shadow-md duration-400">
+                <div class="lg:col-span-2 px-5 py-2.5  border p-2 shadow-xs rounded-md border-slate-300 flex gap-2 items-center hover:shadow-md duration-400">
                     <span data-lucide='Search' class="w-4 opacity-50"></span>
 
                     <input
@@ -116,11 +127,11 @@
 
                 </div>
 
-                <div class=" px-5 py-2.5 rounded-md  border border-slate-300 shadow-xs hover:shadow-md duration-400">
+                
 
                     <select
                         name="type"
-                        class="w-full rounded-lg border-gray-300"
+                        class="rounded-md border border-slate-300 w-full px-5 py-2.5 outline-none cursor-pointer shadow-xs hover:shadow-md duration-400  "
                     >
 
                         <option value="">All Types</option>
@@ -141,13 +152,9 @@
 
                     </select>
 
-                </div>
-
-                <div class="px-5 py-2.5 rounded-md  border border-slate-300 shadow-xs hover:shadow-md duration-400">
-
                     <select
                         name="status"
-                        class="w-full rounded-lg border-gray-300"
+                        class="rounded-md border border-slate-300 w-full px-5 py-2.5 outline-none cursor-pointer shadow-xs hover:shadow-md duration-400  "
                     >
 
                         <option value="">All Status</option>
@@ -168,7 +175,7 @@
 
                     </select>
 
-                </div>
+                
 
                 
                     <a
@@ -179,54 +186,50 @@
                     </a>
 
 
-                <div class="md:col-span-4 flex gap-3">
-
+                
                     <button
                         type="submit"
-                        class="px-5 py-2.5 rounded-lg bg-black text-white"
+                        class="px-5 py-2.5 rounded-md  flex gap-2 items-center justify-center shadow-xs hover:shadow-md hover:shadow-slate-700 duration-400 cursor-pointer bg-slate-700 text-slate-50 "
                     >
                         Search
                     </button>
-
-                </div>
-
             </form>
 
         </div>
-</div>
 
 <!-- Down Side -->
         
 
-        <div class="overflow-x-auto ">
+        <div class="overflow-x-auto mx-4 mb-2  rounded-xl border border-slate-300">
 
-            <table class="w-full text-left">
+            <table class="w-full text-left table-auto ">
 
-                <thead class="bg-gray-50 border-b">
+                <thead class="bg-gray-100  border-slate-100">
 
-                    <tr>
+                    <tr class="">
 
-                        <th class="px-6 py-4 font-semibold">
+                        <th class="  px-4 py-3 font-semibold">
                             Vendor
                         </th>
 
-                        <th class="px-6 py-4 font-semibold">
+                        <th class=" px-4 py-3 font-semibold">
                             Company
                         </th>
 
-                        <th class="px-6 py-4 font-semibold">
+                        <th class=" px-4 py-3 font-semibold">
                             Type
                         </th>
 
-                        <th class="px-6 py-4 font-semibold">
+                        <th class=" px-4 py-3 font-semibold">
+                            Status
+                        </th>
+                        <th class=" px-4 py-3 font-semibold">
                             Contact
                         </th>
 
-                        <th class="px-6 py-4 font-semibold">
-                            Status
-                        </th>
+                        
 
-                        <th class="px-6 py-4 font-semibold">
+                        <th class=" px-4 py-3 font-semibold">
                             Actions
                         </th>
 
@@ -234,35 +237,55 @@
 
                 </thead>
 
-                <tbody class="divide-y">
+                <tbody class="divide-y divide-slate-200 ">
 
                     @forelse($vendors as $vendor)
 
-                        <tr class="hover:bg-gray-50">
+                        <tr class=" hover:bg-gray-50">
 
-                            <td class="px-6 py-4">
+                            <td class=" px-4 py-3 flex items-center gap-3">
 
                                 <a 
     href="{{ route('vendors.show', $vendor) }}" 
-    class="font-medium text-blue-600 hover:underline"
+    class=" "
 >
-    {{ $vendor->name }}
+<div data-lucide="{{ $vendor->type === 'product'
+                                        ? 'CircleUser'
+                                        : 'CircleUserRound'
+                                    }}" class="{{ $vendor->type === 'product'
+                                        ? ' bg-blue-200 text-blue-500 rounded-full p-2.5 w-10 h-10'
+                                        : 'bg-purple-200 text-purple-500 rounded-full p-2.5 w-10 h-10'
+                                    }}"
+                                >
+</div>
+                            <div>
+                            <span
+                                    class=" font-bold
+                                    {{ $vendor->type === 'product'
+                                        ? ' text-blue-900'
+                                        : ' text-purple-900'
+                                    }}"
+                                >
+                                {{ $vendor->name }}
+                            </span>
+    
 </a>
 
-                                <div class="text-sm text-gray-500">
+                                <div class="font-semibold text-sm text-gray-400">
                                     {{ $vendor->email }}
+                                </div>
                                 </div>
 
                             </td>
 
-                            <td class="px-6 py-4">
+                            <td class="font-semibold text-sm px-4 py-3">
                                 {{ $vendor->company_name }}
                             </td>
 
-                            <td class="px-6 py-4">
+                            <td class=" px-4 py-3">
 
                                 <span
-                                    class="px-3 py-1 rounded-full text-sm
+                                    class="px-3 py-1 rounded-md text-sm font-bold
                                     {{ $vendor->type === 'product'
                                         ? 'bg-blue-100 text-blue-700'
                                         : 'bg-purple-100 text-purple-700'
@@ -273,35 +296,48 @@
 
                             </td>
 
-                            <td class="px-6 py-4">
+                            
+
+                            <td class="px-4 py-3">
+
+                                <span
+                                    class="px-3 py-1 rounded-md text-sm font-bold
+                                    {{ $vendor->status === 'active'
+                                        ? 'bg-green-100 text-green-700'
+                                        : 'bg-red-100 text-red-700'
+                                    }}"
+                                >
+                                • {{ ucfirst($vendor->status) }}</span>
+                            </td>
+
+                            <td class=" px-4 py-3 font-semibold text-sm" >
                                 {{ $vendor->phone }}
                             </td>
 
-                            <td class="px-6 py-4">
-
-                                <span
-                                    class="px-3 py-1 rounded-full text-sm
-                                    {{ $vendor->status === 'active'
-                                        ? 'bg-green-100 text-green-700'
-                                        : 'bg-gray-100 text-gray-700'
-                                    }}"
-                                >
-                                    {{ ucfirst($vendor->status) }}
-                                </span>
-
-                            </td>
-
-                            <td class="px-6 py-4">
+                            <td class=" px-4 py-3">
 
                                 <div class="flex gap-2">
 
+                                <a
+                                            href="{{ route('vendors.show', $vendor) }}"
+                                        
+                                    >
+
+                                <div class="flex items-center gap-2 hover:shadow-lg border border-slate-300 px-3 hover:bg-cyan-50 py-1 rounded-md duration-300">
+<span data-lucide="Eye" class="w-4 h-4 text-cyan-500" ></span>
+                                    
+                                       <p class="text-cyan-500 font-bold text-sm">View</p> 
+                                    </div>
+                                    </a>
+                                    <div class="flex items-center gap-2 hover:shadow-lg border border-slate-300 px-3 bg-teal-50 hover:bg-teal-100 py-1 rounded-md duration-300">
+<span data-lucide="PenLine" class="w-4 h-4 text-teal-700" ></span>
                                     <a
                                         href="{{ route('vendors.edit', $vendor) }}"
-                                        class="text-blue-600 hover:underline"
+                                        class="text-teal-700 font-bold text-sm"
                                     >
                                         Edit
                                     </a>
-
+</div>
                                     <form
                                         action="{{ route('vendors.destroy', $vendor) }}"
                                         method="POST"
@@ -310,14 +346,15 @@
 
                                         @csrf
                                         @method('DELETE')
-
+<div class="flex items-center gap-2 hover:shadow-lg border border-slate-300 px-3 bg-red-50 hover:bg-red-100 py-1 rounded-md duration-300">
+<span data-lucide="Trash" class="w-4 h-4 text-red-700" ></span>
                                         <button
                                             type="submit"
-                                            class="text-red-600 hover:underline"
+                                            class="text-red-600 font-bold text-sm"
                                         >
                                             Delete
                                         </button>
-
+</div>
                                     </form>
 
                                 </div>
@@ -349,7 +386,7 @@
 
         @if($vendors->hasPages())
 
-            <div class="p-5 border-t">
+            <div class="px-4 py-2 pb-4 ">
                 {{ $vendors->links() }}
             </div>
 
@@ -358,6 +395,13 @@
     </div>
 
 </div>
+
+
+
+
+</div>
+
+
 
 </body>
 </html>
