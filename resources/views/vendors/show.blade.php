@@ -12,10 +12,10 @@
     >
 
     <title>{{ $vendor->name }}</title>
+<!-- 
+        <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}"> -->
 
-        <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}">
-
-    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 

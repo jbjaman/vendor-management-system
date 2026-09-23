@@ -10,16 +10,16 @@
     >
     <title>Vendors</title>
 <!-- For Live Production -->
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}"> -->
 
 
     <!-- For Local -->
-    <!-- @vite(['resources/css/app.css', 'resources/js/app.js']) -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="max-w-7xl mx-auto bg-gray-100 ">
 
-<div class="p-4">
+<div class="p-1">
 
     <!-- <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 border">
 
@@ -45,64 +45,57 @@
 
     <div class="rounded-lg bg-white  shadow">
 
-    <div class="">
-   
-<!-- Header -->
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between p-4 items-center max-md:gap-4 justify-between">
-        <!-- left side -->
-            <div class="border-l-4 pl-5 border-blue-700">
-        <h1 class=" text-4xl  font-bold text-gray-900">Vendor Management</h1>
-        <span class="text-sm text-gray-500 ">Manage your vendors efficiently and grow your business.</span>
-</div>
-<!-- vendor count card -->
 
-<div class=" lg:flex items-center gap-3">
 
-<!-- No -4 -->
 
-<div class=" rounded-lg py-2 px-3 flex flex-col  shadow-inner shadow-slate-200 gap-2">
-    <p class="text-xs text-gray-500">All Types </p>
-    <div class="flex items-center gap-2">
-    <div class="flex px-3 items-center gap-2 rounded-sm bg-purple-100">
-    <span data-lucide="briefcase-business" class="w-4 h-4 text-purple-600  "></span>
-        <p class="">{{$consultantVendors}}</p>
-    </div>
-    <div class="flex  px-3 items-center gap-2 rounded-sm bg-blue-100">
-    <span data-lucide="package" class="w-4 h-4 text-blue-600"></span>
-        <p class="">{{$productVendors}}</p>
-    </div>
-</div>
-</div>
-<div class=" rounded-lg py-2 px-3 flex flex-col  shadow-inner shadow-slate-200 gap-2">
-    <p class="text-xs text-gray-500">All Status</p>
-    <div class="flex items-center gap-3">
-    <div class="flex  px-3 items-center gap-2 rounded-sm bg-green-100">
-    <span data-lucide="CircleCheck" class="w-4 h-4 text-green-600  "></span>
-        <p class=" ">{{$activeVendors}}</p>
-    </div>
-    <div class="flex  px-3 items-center gap-2 rounded-sm bg-red-100">
-    <span data-lucide="CircleX" class="w-4 h-4 text-red-600"></span>
-        <p class=" ">{{$inactiveVendors}}</p>
-    </div>
-</div>
-</div>
-<!-- End -->
 
-</div>
 
-<!-- vendor Add button -->
-<div class="">
-<a
+
+
+    <div class="lg:flex grid  p-4 items-center gap-4 justify-between">
+        <!-- 1st -->
+        <div class=" border-l-4 pl-5 border-blue-700">
+            <p class=" text-4xl  font-bold text-gray-900">Vendor Management</p>
+            <span class="text-sm text-gray-500 ">Manage your vendors efficiently and grow your business.</span>
+        </div>
+        <!-- 2nd -->
+        <div class=" flex items-center gap-3">
+            <div class="w-full rounded-lg py-2 px-3 flex flex-col shadow-inner shadow-slate-200 gap-2">
+                <p class="text-xs text-gray-500">All Types </p>
+                <div class="flex items-center gap-2">
+                    <div class="flex px-3 items-center gap-2 rounded-sm bg-purple-100">
+                        <span data-lucide="briefcase-business" class="w-4 h-4 text-purple-600  "></span>
+                        <p class="">{{$consultantVendors}}</p>
+                    </div>
+                    <div class="flex  px-3 items-center gap-2 rounded-sm bg-blue-100">
+                        <span data-lucide="package" class="w-4 h-4 text-blue-600"></span>
+                        <p class="">{{$productVendors}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full rounded-lg py-2 px-3 flex flex-col  shadow-inner shadow-slate-200 gap-2">
+                <p class="text-xs text-gray-500">All Status</p>
+                <div class="flex items-center gap-3">
+                    <div class="flex  px-3 items-center gap-2 rounded-sm bg-green-100">
+                        <span data-lucide="CircleCheck" class="w-4 h-4 text-green-600  "></span>
+                        <p class=" ">{{$activeVendors}}</p>
+                    </div>
+                    <div class="flex  px-3 items-center gap-2 rounded-sm bg-red-100">
+                        <span data-lucide="CircleX" class="w-4 h-4 text-red-600"></span>
+                        <p class=" ">{{$inactiveVendors}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 3rd -->
+        <a
             href="{{ route('vendors.create') }}"
-            class="inline-flex justify-center px-6 py-3 shadow-md shadow-slate-500 rounded-lg bg-blue-600 text-white  hover:shadow-lg duration-300"
-        >
+            class="inline-flex justify-center px-6 py-3 shadow-md shadow-slate-500 rounded-lg bg-blue-600 text-white  hover:shadow-lg duration-300">
             + Add Vendor
         </a>
-</div>
+        
+    </div>
 
-
-</div>
-</div>
 
 
 
@@ -307,7 +300,7 @@
                                         : 'bg-red-100 text-red-700'
                                     }}"
                                 >
-                                • {{ ucfirst($vendor->status) }}</span>
+                                {{ ucfirst($vendor->status) }}</span>
                             </td>
 
                             <td class=" px-4 py-3 font-semibold text-sm" >
