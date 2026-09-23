@@ -10,6 +10,9 @@
 
     <title>Edit Vendor</title>
 
+    <!-- For Live Production 
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DFkjFGaM.css') }}"> -->
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
@@ -357,7 +360,7 @@
 
 
                     <!-- Actions -->
-                    <div class="mt-8 flex flex-col-reverse gap-3 border-t border-gray-200 pt-6 sm:flex-row sm:justify-end">
+                    <div class=" flex flex-col-reverse gap-3 border-gray-200 pt-6 sm:flex-row sm:justify-end">
 
                         <a
                             href="{{ route('vendors.index') }}"

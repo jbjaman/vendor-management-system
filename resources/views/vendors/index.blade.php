@@ -64,11 +64,11 @@
     <p class="text-xs text-gray-500">All Types </p>
     <div class="flex items-center gap-2">
     <div class="flex px-3 items-center gap-2 rounded-sm bg-purple-100">
-    <span data-lucide="CircleUserRound" class="w-4 h-4 text-purple-600  "></span>
+    <span data-lucide="briefcase-business" class="w-4 h-4 text-purple-600  "></span>
         <p class="">{{$consultantVendors}}</p>
     </div>
     <div class="flex  px-3 items-center gap-2 rounded-sm bg-blue-100">
-    <span data-lucide="CircleUser" class="w-4 h-4 text-blue-600"></span>
+    <span data-lucide="package" class="w-4 h-4 text-blue-600"></span>
         <p class="">{{$productVendors}}</p>
     </div>
 </div>
@@ -329,15 +329,16 @@
                                        <p class="text-cyan-500 font-bold text-sm">View</p> 
                                     </div>
                                     </a>
-                                    <div class="flex items-center gap-2 hover:shadow-lg border border-slate-300 px-3 bg-teal-50 hover:bg-teal-100 py-1 rounded-md duration-300">
-<span data-lucide="PenLine" class="w-4 h-4 text-teal-700" ></span>
                                     <a
                                         href="{{ route('vendors.edit', $vendor) }}"
-                                        class="text-teal-700 font-bold text-sm"
+                                        class="text-teal-700 font-bold text-sm cursor-pointer"
                                     >
+                                    <div class="flex items-center gap-2 hover:shadow-lg border border-slate-300 px-3 bg-teal-50 hover:bg-teal-100 py-1 rounded-md duration-300">
+<span data-lucide="PenLine" class="w-4 h-4 text-teal-700" ></span>
+                                   
                                         Edit
+                                    </div>
                                     </a>
-</div>
                                     <form
                                         action="{{ route('vendors.destroy', $vendor) }}"
                                         method="POST"
@@ -346,15 +347,17 @@
 
                                         @csrf
                                         @method('DELETE')
-<div class="flex items-center gap-2 hover:shadow-lg border border-slate-300 px-3 bg-red-50 hover:bg-red-100 py-1 rounded-md duration-300">
-<span data-lucide="Trash" class="w-4 h-4 text-red-700" ></span>
+
                                         <button
                                             type="submit"
-                                            class="text-red-600 font-bold text-sm"
+                                            class="text-red-600 font-bold text-sm cursor-pointer"
                                         >
+                                        <div class="flex items-center gap-2 hover:shadow-lg border border-slate-300 px-3 bg-red-50 hover:bg-red-100 py-1 rounded-md duration-300">
+<span data-lucide="Trash" class="w-4 h-4 text-red-700" ></span>
                                             Delete
+                                            </div>
                                         </button>
-</div>
+
                                     </form>
 
                                 </div>
